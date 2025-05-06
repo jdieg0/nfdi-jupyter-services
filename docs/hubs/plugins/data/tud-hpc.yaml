@@ -20,17 +20,40 @@ restricted: true
 login_process: Login via ZIH credentials
 features: # What the service offers.
   # version of JupyterHub; classic notebook or lab view?
-  version: JupyterLab ?.?
+  version: JupyterLab 4.2
   # List of supported programming languages (kernels)
-  programming_languages: [Python, Julia, MATLAB, R]
+  programming_languages: [C, Python, Julia, MATLAB, R]
   # List of supported environments (e.g., Python virtualenv) configured as kernels
-  environments: [Conda Environment, Python Virtualenv]
+  environments:
+    - C
+    - Conda Environment
+    - Julia 1.9.3
+    - MATLAB Kernel (2024a)
+    - MATLAB Web (2024a)
+    - MATLAB Web (2024a - CT)
+    - Octave 9.3 (CT)
+    - PyOpenCL
+    - Python Virtualenv
+    - Python 3 (Scientific)
+    - Python 3 (Machine Learning / TensorFlow)
+    - PyTorch v1.x (Machine Learning)
+    - PyTorch v2.x (Machine Learning)
+    - R 4.2
+    - R 4.3
+    - TensorFlow (CT)
   # Link to information about the supported environments, if not included under documentation_url
   environments_info: https://compendium.hpc.tu-dresden.de/access/jupyterhub_custom_environments/
   # List of pre-installed JupyterHub extensions
-  extensions: [TensorBoard, WebVNC]
+  extensions:
+    - TensorBoard
+    - WebVNC
+    - WebVNC GL
   # List of server-proxy featured applications
-  proxy_apps: [MATLAB Web, RStudio]
+  proxy_apps:
+    - MATLAB Web
+    - RStudio
+    - WebVNC
+    - WebVNC GL
   # Whether it is allowed to install further packages, kernels, extensions (true / false)
   install: true
   # Whether there is a folder to share documents with others (true / false)
@@ -38,12 +61,18 @@ features: # What the service offers.
   # Whether files can survive the docker session (true / false)
   persistent_storage: true
   # List of other features you find relevant
-  misc: [Support for user-defined Conda/venv environments, support for teaching environments, access to group-shared data folders, persistent custom JupyterLab user settings]
+  misc:
+    - Support for user-defined Conda/venv environments
+    - Multiple Python environments (Scientific, ML, TensorFlow)
+    - Access to compiled languages (C, OpenCL)
+    - Support for teaching environments
+    - Persistent custom JupyterLab user settings
+    - Access to group-shared data folders
 technicals: # Information about the technology stack used
   # The underlying system below JupyterHub, e.g., HPC, Openstack
   platform: HPC
   # The way Jupyter is installed on the system, e.g., Docker, Kubernetes
-  deployment: SLURM-managed containerized sessions
+  deployment: Slurm-managed containerized sessions
   # Link to more (technical) information or a (Git) repository about the deployment or other administration tasks
   deployment_url: https://compendium.hpc.tu-dresden.de/access/jupyterhub/
   # List of required attributes, entitlements or memberships for login
@@ -54,33 +83,33 @@ technicals: # Information about the technology stack used
   misc: []
 resources: # Information about available resources on the instance
   # Default number of Jupyter servers per user
-  default_server_user:
+  default_server_user: 1
   # Maximum number of Jupyter servers per user
-  max_server_user:
+  max_server_user: 1
   # Default number of CPU for a Jupyter server
-  default_cpu:
+  default_cpu: 1
   # Maximum number of CPU for a Jupyter server
-  max_cpu:
+  max_cpu: 16
   # Guarantied total number of CPUs for the whole Jupyterhub instance
   total_cpu:
   # Scaled total number of CPUs for the whole JupyterHub instance. Normally not exclusive, depends on other factors.
   burst_total_cpu:
   # Default CPU time for a Jupyter server
-  default_cpu_time:
+  default_cpu_time: 1 hour
   # Maximum CPU time for a Jupyter server
-  max_cpu_time:
+  max_cpu_time: 8 hours
   # Default amount of memory for a Jupyter server
-  default_memory:
+  default_memory: 1.5 GB
   # Maximum amount of memory for a Jupyter server
-  max_memory:
+  max_memory: 64 GB
   # Guarantied total amount of memory for the whole Jupyterhub instance
   total_memory:
   # Scaled total amount of memory for the whole JupyterHub instance. Normally not exclusive, depends on other factors.
   burst_total_memory:
   # Default number of GPU for a Jupyter server
-  default_gpu:
+  default_gpu: 1
   # Maximum number of GPU for a Jupyter server
-  max_gpu:
+  max_gpu: 1
   # Guarantied total number of GPUs for the whole Jupyterhub instance
   total_gpu:
   # Scaled total number of GPUs for the JupyterHub instance. Normally not exclusive, depends on other factors.
